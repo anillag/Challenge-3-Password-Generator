@@ -13,7 +13,7 @@ var pwSpChars = "";
 function generatePassword() {
   // User prompted for password length between 8-128 - DONE
   var pwLength = window.prompt("Welcome to the Password Generator!  Please enter your desired password length, between 8 and 128");
-  console.log(pwLength);
+  console.log("Password should be " + pwLength + " characters in length.");
   if (pwLength < 8 || pwLength > 128 || pwLength === "" || pwLength === null) {
     window.alert("Value selected is outside of the acceptable range or was left blank.  Please try again.")
     return generatePassword();
@@ -52,6 +52,45 @@ function generatePassword() {
   console.log(pwSpChars);
   if (pwSpChars === "" || pwSpChars === null) {
     window.alert("Entry was left blank.  Please try again.")
+    return generatePassword();
+  }
+
+  // Begin validation to check that at least ONE OR MORE options were selected ("Y")
+  if (pwLowercase === "Y") {
+    console.log("Password should contain lowercase letters.  Current 'contentValidation' value is " + contentValidation + ".  Incrementing 'contentValidation' variable by 1.");
+    contentValidation++;
+    console.log("New 'contentValidation' variable is " + contentValidation + ".");
+  } else {
+    console.log("Password should NOT contain lowercase letters.  Skipping increment of 'contentValidation'.  Current 'contentValidation' value is " + contentValidation + ".")
+  }
+  if (pwUppercase === "Y") {
+    console.log("Password should contain uppercase letters.  Current 'contentValidation' value is " + contentValidation + ".  Incrementing 'contentValidation' variable by 1.");
+    contentValidation++;
+    console.log("New 'contentValidation' variable is " + contentValidation + ".");
+  } else {
+    console.log("Password should NOT contain uppercase letters.  Skipping increment of 'contentValidation'.  Current 'contentValidation' value is " + contentValidation + ".");
+  }
+  if (pwNumerals === "Y") {
+    console.log("Password should contain numerals.  Current 'contentValidation' value is " + contentValidation + ".  Incrementing 'contentValidation' variable by 1.");
+    contentValidation++;
+    console.log("New 'contentValidation' variable is " + contentValidation + ".");
+  } else {
+    console.log("Password should NOT contain numerals.  Skipping increment of 'contentValidation'.  Current 'contentValidation' value is " + contentValidation + ".");
+  }
+  if (pwSpChars === "Y") {
+    console.log("Password should contain special characters.  Current 'contentValidation' value is " + contentValidation + ".  Incrementing 'contentValidation' variable by 1.");
+    contentValidation++;
+    console.log("New 'contentValidation' variable is " + contentValidation + ".");
+  } else {
+    console.log("Password should NOT contain special characters.  Skipping increment of 'contentValidation'.  Current 'contentValidation' value is " + contentValidation + ".");
+  }
+  
+  // Finalize validation that at least ONE OR MORE options was selected ("Y")
+  if (contentValidation > 0) {
+    console.log("The 'contentValidation' variable is set to " + contentValidation + ".  At least one option was selected.  Allowing script to continue.");
+  } else {
+    console.log("The 'contentValidation' variable is set to " + contentValidation + ".  No options were selected.  Restarting password generator.");
+    window.alert("No options were selected.  Please try again.");
     return generatePassword();
   }
 };
