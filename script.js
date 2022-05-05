@@ -6,6 +6,11 @@ var pwUppercase = "";
 var pwNumerals = "";
 var pwSpChars = "";
 
+const valuesLowercase = "abcdefghijklmnopqrstuvwxyz";
+const valuesUppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const valuesNumerals = "0123456789";
+const valuesSpChars = "!#$%&()*+,-./:;<=>?@[\]^_`{|}~";
+
 // **********************
 // ** Pseudocode Start **
 // **********************
@@ -56,6 +61,7 @@ function generatePassword() {
   }
 
   // Begin validation to check that at least ONE OR MORE options were selected ("Y")
+  console.log('Beginning data validation to make sure at least one option was selected ("Y").')
   if (pwLowercase === "Y") {
     console.log("Password should contain lowercase letters.  Current 'contentValidation' value is " + contentValidation + ".  Incrementing 'contentValidation' variable by 1.");
     contentValidation++;
@@ -98,9 +104,10 @@ function generatePassword() {
 
 // User prompts take input to select criteria - DONE
 // Validate all user input as it's being collected - DONE
-// Validate that at least one character type was selected
+// Validate that at least one character type was selected - DONE
 // Generate password based on selected criteria
 // Display password in either window.alert() or replace HTML
+// Joseph's hint, use pop and/or push to add characters to the array for characters
 // **********************
 // *** Pseudocode End ***
 // **********************
